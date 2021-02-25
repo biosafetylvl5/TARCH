@@ -1,0 +1,47 @@
+@startuml
+left to right direction
+rectangle "DATA IN" as di
+rectangle "DATA OUT" as do
+
+
+rectangle TARCH {
+  do <- (main)
+  (main) <- di
+  rectangle Modules as m{
+		"iGEMTeams" as (module1)
+		"wikiData" as (module2)
+  		(main) <--> (module1)
+  		(main) <--> (module2)
+        (module2) .> (module1)
+  }
+  rectangle dataUtils as dut {
+  
+        "Utilities" as (utils)
+        "Logging" as (log)
+        "Validation" as (validate)
+        
+        (module1) ---> (log) : Enforces a standard for logging
+        (module1) ---> (utils) : \n\nProvides general use functions
+        (module1) <--- (validate) : \nValidates module output
+        
+        [DataModule] .> m : Sets and enforces schema for writing modules
+  }
+}
+  
+  
+  note right of di{
+    Messy, undocumented,
+    multi-format, hard to work with
+  }
+  note right of do{
+    Clean, documented,
+    conforms to known schema, 
+    easy to work with
+  }
+  
+    note right of module2{
+    Has identical relationship with 
+    dataUtils; arrows not shown
+    for readability
+  }
+@enduml

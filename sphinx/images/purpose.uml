@@ -1,0 +1,43 @@
+@startuml
+left to right direction
+
+actor iGEM
+rectangle "DATA IN" as di
+rectangle "DATA OUT" as do
+actor scientist
+
+actor "Real World\nActor" as iGEM
+
+  iGEM --> di
+rectangle TARCH {
+  di --> (magic)
+  (magic) --> do
+}
+  do --> scientist
+  
+  rectangle "Python" as py
+  rectangle "R Studio" as r
+  rectangle "Excel" as excel
+  rectangle "... etc." as more
+  
+  scientist --> py
+  scientist --> r
+  scientist --> excel
+  scientist --> more
+  
+  note top of di{
+    Messy, undocumented,
+    multi-format, hard to work with
+  }
+  note left of py{
+    Python is a first class interface,
+    but anything that can work with
+    databases/csv files can use the
+    exported data
+  }
+  note top of do{
+    Clean, documented,
+    conforms to known schema, 
+    easy to work with
+  }
+@enduml

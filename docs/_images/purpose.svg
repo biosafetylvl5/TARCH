@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="289px" preserveAspectRatio="none" style="width:1202px;height:289px;" version="1.1" viewBox="0 0 1202 289" width="1202px" zoomAndPan="magnify"><defs><filter height="300%" id="f13dwaau26mffl" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[9c3c9158f78a973931448424fbf17fd2]
+cluster TARCH--><rect fill="#FFFFFF" filter="url(#f13dwaau26mffl)" height="81" style="stroke: #000000; stroke-width: 1.5;" width="99" x="409" y="118.5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="54" x="431.5" y="133.4951">TARCH</text><ellipse cx="458.4056" cy="168.5236" fill="#FEFECE" filter="url(#f13dwaau26mffl)" rx="33.4056" ry="14.5236" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="43" x="436.9056" y="173.1721">magic</text><!--MD5=[a72b288a4f1595bda7cfb370ae85c4f1]
+entity iGEM--><ellipse cx="44.5" cy="129" fill="#FEFECE" filter="url(#f13dwaau26mffl)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.5;"/><path d="M44.5,137 L44.5,164 M31.5,145 L57.5,145 M44.5,164 L31.5,179 M44.5,164 L57.5,179 " fill="none" filter="url(#f13dwaau26mffl)" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="77" x="6" y="197.4951">Real World</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="40" x="6" y="213.792">Actor</text><!--MD5=[5b1a34fb7ccf0e6c98f9e955f705d4f2]
+entity di--><rect fill="#FEFECE" filter="url(#f13dwaau26mffl)" height="36.2969" style="stroke: #000000; stroke-width: 1.5;" width="78" x="215" y="150.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="58" x="225" y="173.4951">DATA IN</text><!--MD5=[f41a38a365ba14fd60501e4507c35dd0]
+entity do--><rect fill="#FEFECE" filter="url(#f13dwaau26mffl)" height="36.2969" style="stroke: #000000; stroke-width: 1.5;" width="93" x="609.5" y="150.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="73" x="619.5" y="173.4951">DATA OUT</text><!--MD5=[2364ca8ff2b45b4969eedef11c23f0d6]
+entity scientist--><ellipse cx="932.5" cy="137.5" fill="#FEFECE" filter="url(#f13dwaau26mffl)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.5;"/><path d="M932.5,145.5 L932.5,172.5 M919.5,153.5 L945.5,153.5 M932.5,172.5 L919.5,187.5 M932.5,172.5 L945.5,187.5 " fill="none" filter="url(#f13dwaau26mffl)" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="62" x="901.5" y="205.9951">scientist</text><!--MD5=[fd71a720deb277bbd1af72c03fa35a41]
+entity py--><rect fill="#FEFECE" filter="url(#f13dwaau26mffl)" height="36.2969" style="stroke: #000000; stroke-width: 1.5;" width="71" x="1109.5" y="23.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="51" x="1119.5" y="46.4951">Python</text><!--MD5=[cbf2a705c8c36a956106bd646f097c75]
+entity r--><rect fill="#FEFECE" filter="url(#f13dwaau26mffl)" height="36.2969" style="stroke: #000000; stroke-width: 1.5;" width="80" x="1105" y="94.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="60" x="1115" y="117.4951">R Studio</text><!--MD5=[3d0c2b196877142715a2f7253dadffa2]
+entity excel--><rect fill="#FEFECE" filter="url(#f13dwaau26mffl)" height="36.2969" style="stroke: #000000; stroke-width: 1.5;" width="58" x="1116" y="165.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="38" x="1126" y="188.4951">Excel</text><!--MD5=[b2cc0b67cc18fc32a9f0d241a7ce7df5]
+entity more--><rect fill="#FEFECE" filter="url(#f13dwaau26mffl)" height="36.2969" style="stroke: #000000; stroke-width: 1.5;" width="68" x="1111" y="236.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="48" x="1121" y="259.4951">... etc.</text><path d="M143,75.5 L143,115.7656 A0,0 0 0 0 143,115.7656 L250,115.7656 L254,150.25 L258,115.7656 L365,115.7656 A0,0 0 0 0 365,115.7656 L365,85.5 L355,75.5 L143,75.5 A0,0 0 0 0 143,75.5 " fill="#FBFB77" filter="url(#f13dwaau26mffl)" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M355,75.5 L355,85.5 L365,85.5 L355,75.5 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="149" x="149" y="92.5669">Messy, undocumented,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="201" x="149" y="107.6997">multi-format, hard to work with</text><path d="M820,6 L820,76.5313 A0,0 0 0 0 820,76.5313 L1045,76.5313 A0,0 0 0 0 1045,76.5313 L1045,45.5 L1109.08,41.5 L1045,37.5 L1045,16 L1035,6 L820,6 A0,0 0 0 0 820,6 " fill="#FBFB77" filter="url(#f13dwaau26mffl)" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M1035,6 L1035,16 L1045,16 L1035,6 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="201" x="826" y="23.0669">Python is a first class interface,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="204" x="826" y="38.1997">but anything that can work with</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="202" x="826" y="53.3325">databases/csv files can use the</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="91" x="826" y="68.4653">exported data</text><path d="M552,60 L552,115.3984 A0,0 0 0 0 552,115.3984 L652,115.3984 L656,150.465 L660,115.3984 L760,115.3984 A0,0 0 0 0 760,115.3984 L760,70 L750,60 L552,60 A0,0 0 0 0 552,60 " fill="#FBFB77" filter="url(#f13dwaau26mffl)" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M750,60 L750,70 L760,70 L750,60 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="129" x="558" y="77.0669">Clean, documented,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="183" x="558" y="92.1997">conforms to known schema,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="114" x="558" y="107.3325">easy to work with</text><!--MD5=[17528c12954bafd3e0a43dec37492fd4]
+link iGEM to di--><path d="M83.0767,168.5 C118.586,168.5 171.845,168.5 209.25,168.5 " fill="none" id="iGEM-to-di" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="214.649,168.5,205.649,164.5,209.649,168.5,205.649,172.5,214.649,168.5" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[a7e1436984db197021e0992484a447ff]
+link di to magic--><path d="M293.089,168.5 C329.343,168.5 383.585,168.5 419.732,168.5 " fill="none" id="di-to-magic" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="424.93,168.5,415.93,164.5,419.93,168.5,415.93,172.5,424.93,168.5" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[6a0e3add950f86d2a6ab0a6a6778f37e]
+link magic to do--><path d="M492.222,168.5 C522.786,168.5 568.871,168.5 604.213,168.5 " fill="none" id="magic-to-do" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="609.346,168.5,600.346,164.5,604.346,168.5,600.346,172.5,609.346,168.5" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[6fe42ee1b4b9b40d5a64019267b8e825]
+link do to scientist--><path d="M702.636,168.5 C757.06,168.5 846.854,168.5 896.236,168.5 " fill="none" id="do-to-scientist" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="901.469,168.5,892.469,164.5,896.469,168.5,892.469,172.5,901.469,168.5" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[67cb1957813fed3d6d30caf99848e413]
+link scientist to py--><path d="M963.66,150.304 C1002.269,127.01 1069.01,86.745 1109.57,62.273 " fill="none" id="scientist-to-py" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="1113.9,59.662,1104.1281,60.8907,1109.62,62.2469,1108.2639,67.7388,1113.9,59.662" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[65e705c9eff7e926c390485e7c014b1a]
+link scientist to r--><path d="M963.66,160.477 C999.381,150.973 1059.18,135.064 1100.05,124.191 " fill="none" id="scientist-to-r" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="1104.94,122.891,1095.214,121.34,1100.1082,124.1768,1097.2714,129.071,1104.94,122.891" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[290fc31022a406a78df4d286e0274e67]
+link scientist to excel--><path d="M963.66,170.649 C1002.609,173.4246 1070.19,178.2401 1110.64,181.1225 " fill="none" id="scientist-to-excel" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="1115.91,181.4987,1107.2187,176.8661,1110.9228,181.1416,1106.6473,184.8457,1115.91,181.4987" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[66743dc2a1aeb29b782d52ded668dd70]
+link scientist to more--><path d="M963.66,180.8217 C1001.129,196.13 1065.09,222.2624 1105.91,238.9387 " fill="none" id="scientist-to-more" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="1110.77,240.9242,1103.9444,233.8242,1106.1395,239.0377,1100.926,241.2329,1110.77,240.9242" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[ba4f7e128da652da4315af83e4cb11c9]
+@startuml
+left to right direction
+
+actor iGEM
+rectangle "DATA IN" as di
+rectangle "DATA OUT" as do
+actor scientist
+
+actor "Real World\nActor" as iGEM
+
+  iGEM - -> di
+rectangle TARCH {
+  di - -> (magic)
+  (magic) - -> do
+}
+  do - -> scientist
+  
+  rectangle "Python" as py
+  rectangle "R Studio" as r
+  rectangle "Excel" as excel
+  rectangle "... etc." as more
+  
+  scientist - -> py
+  scientist - -> r
+  scientist - -> excel
+  scientist - -> more
+  
+  note top of di{
+    Messy, undocumented,
+    multi-format, hard to work with
+  }
+  note left of py{
+    Python is a first class interface,
+    but anything that can work with
+    databases/csv files can use the
+    exported data
+  }
+  note top of do{
+    Clean, documented,
+    conforms to known schema, 
+    easy to work with
+  }
+@enduml
+
+PlantUML version 1.2020.17beta5(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

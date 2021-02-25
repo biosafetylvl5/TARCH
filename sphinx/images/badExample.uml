@@ -1,0 +1,23 @@
+@startuml
+actor "Scientist" as os
+artifact "Input Data" as i
+folder "Folder on your computer" as folder {
+
+file "Script 1" as a
+file "Script 2" as b
+file "Script A" as c
+file "Script 4" as d
+file "Script by old postdoc" as e
+file "Script 5" as f
+}
+
+i->a
+a->b
+b->e
+e->f
+f->d
+f->c
+c->d
+
+d-----right-->os
+@enduml

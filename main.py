@@ -1,0 +1,165 @@
+import importlib, os, time, argparse
+from modules import dataUtils as dut
+
+parser = argparse.ArgumentParser(description='Tardigrade Architecture Data Processing (TARCH)')
+parser.add_argument('-nd', '--no-drop', type=str, action='append', default=None,
+                    choices=dut.dataDropKey.keys(),
+                    help='type of data to prevent dropping (default: %(default)s)')
+
+parser.add_argument('-ll', '--logging-level', type=str, action='store', default="INFO",
+                    choices=["NONE", "DEBUG", "INFO", "WARNING", "DATADROP", "ERROR", "CRITICAL"],
+                    help='what types of messages should be logged to console (default: %(default)s)')
+
+parser.add_argument('--file-logging-level', type=str, action='store', default="DEBUG",
+                    choices=["NONE", "DEBUG", "INFO", "WARNING", "DATADROP", "ERROR", "CRITICAL"],
+                    help='what types of messages should be logged to log file (default: %(default)s)')
+
+parser.add_argument('--log-file', const=str, action='store_const', default="tarch.log",
+                    help='file to log to (default: %(default)s)')
+
+args = parser.parse_args()
+dut.logFilename = dut.getFile(args.log_file)
+if args.no_drop is not None:
+    dut.ignoreDrop = args.no_drop # implement arg actions
+
+
+def fullSplitPath(path):
+    """
+    :param path: relative path (eg. "./hello/also here/file")
+    :type path: str
+
+    :returns: ["hello", "also here", "file"]
+    :rtype: list
+    """
+    pathList = []
+    splitPath = os.path.split(path)
+    if splitPath[0] == ".":
+        return splitPath[1]
+    subs = fullSplitPath(splitPath[0])
+    pathList.extend([subs] if isinstance(subs, str) else subs)
+    pathList.append(splitPath[1])
+    return pathList
+
+
+def getDataModules(path):
+    """
+    :param path:
+    :type path: str
+
+    :returns: list of tuples of imported data modules
+    """
+    modules = []
+    for root, dirs, files in os.walk(path):
+        for subDir in dirs:
+            modules.extend(getDataModules(subDir))
+        for file in files:
+            if "__pycache__" in root:
+                continue
+            try:
+                if ".py" in file:
+                    moduleImportString = fullSplitPath(str(os.path.join(root, file.replace(".py", ""))))
+                    moduleImportString = ".".join(moduleImportString)
+                    module = importlib.import_module(moduleImportString)
+                    try:
+                        try:
+                            module = module.exportedClass()
+                        except TypeError as e:
+                            dut.l.critical(f"Error importing module {module}")
+                            dut.l.critical(e)
+                            dut.l.critical("Exiting...")
+                            exit(1)
+                        modules.append(module)
+                    except AttributeError:
+                        pass
+            except Exception as e:
+                raise e
+    return list(filter(lambda m: m.run, modules))  # remove modules with run set to false
+
+
+def toposort(dependencyTopology):
+    """
+    toposort (dict): dictonary of objects and tuples of mutual dependencies on said objects
+    returns:
+        list of objects sorted by dependency such that dependencies are satisfied in order [0]=>[n]
+    """
+
+    orderedModules = []
+    while len(dependencyTopology.keys()) > 0:
+        # get node with no dependencies (node with in-degree 0)
+        for module, dependencies in dependencyTopology.items():
+            if dependencies == ():
+                # remove node
+                orderedModules.append(module)
+                dependencyTopology.pop(module)
+                break
+        else:
+            raise Exception("Invalid dependency structure found in modules, no correct execution scheme can be "
+                            "identified.")
+        # update unsatisfied dependencies
+        for module, dependencies in dependencyTopology.items():
+            dependencyTopology[module] = tuple(d for d in dependencies if not d == orderedModules[-1])
+    return orderedModules
+
+
+def sortDataModules(unsortedModules):
+    """
+    unsortedModules (list): list of tuples of objects and tuple of dependencies (eg. as given by getDataModules)
+
+    returns:
+        list of objects sorted by dependencies such that if executed in orhttps://clockify.me/projectsder (list[0]=>list[n]) all dependencies are satisfied
+    exception ??:
+        no possible ordering satisfies dependency tree
+    """
+    dependencyTopology = {}
+    for module in unsortedModules:
+        dependencyTopology[module.name()] = module.depends
+    order = toposort(dependencyTopology)
+    return [{module.name(): module for module in unsortedModules}[name] for name in order]
+
+
+class MasterFrameClass():
+    def __init__(self):
+        self.frames = {}
+
+    def storeComponent(self, data, generator, source):
+        return
+
+    def getFrame(self, framename):
+        return self.frames[framename]
+
+    def updateFrame(self, framename, updatedFrame):
+        self.frames[framename] = updatedFrame
+
+    def export(self, path):
+        # TODO: write this,, better.
+        for key in self.frames:
+            with open(os.path.join(path, key + ".json"), "w") as f:
+                f.write(self.frames[key].to_json())
+
+    def addNewFrame(self, frameName, frame):
+        self.frames[frameName] = frame
+
+dut.l.info("Loading Modules...")
+
+dataModules = getDataModules("./modules")
+dataModules = sortDataModules(dataModules)
+
+MasterFrame = MasterFrameClass()
+
+dut.l.info("Done.")
+
+for dataModule in dataModules:
+    timeStart = time.time()
+    dut.l.info("Running {0}...".format(dataModule.name()))
+    dataModule.importData()
+    dataModule.setCheckpoint()
+    dataModule.prepareData()
+    dataModule.logChanges()
+    annotatedData = dataModule.annotateData()
+    MasterFrame.storeComponent(annotatedData, generator=dataModule.name(), source=dataModule.source())
+    dataModule.mergeData(MasterFrame)
+    dut.l.info("Done! (took {0}ms)".format(round(1000 * (time.time() - timeStart))))
+
+dut.l.info("Exporting data...")
+MasterFrame.export("./exports")
+dut.l.info("All done! Exiting...")

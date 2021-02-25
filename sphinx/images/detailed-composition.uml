@@ -1,0 +1,134 @@
+@startuml
+package "Documentation"{
+  package "Sphinx" <<Frame>> {
+  }
+}
+
+package "TARCH" {
+ package "Main" <<Rectangle>> #DDDDDD {
+    main : getDataModules()
+    main : toposort()
+    main : MasterFramework
+  }
+
+package "Modules" {
+  package "iGEMTeams" <<Rectangle>> #DDDDDD {
+    class "DataHandler" as DataHandler1
+    DataHandler1 : name
+    DataHandler1 : source
+    DataHandler1 : depends
+    DataHandler1 : productionReady
+    DataHandler1 : importData()
+    DataHandler1 : prepareData()
+    DataHandler1 : annotateData()
+    DataHandler1 : mergeData()
+    DataHandler1 : describeData()
+  }
+
+   package "wikiData" <<Rectangle>> #DDDDDD {
+    class "DataHandler" as DataHandler2
+    DataHandler2 : name
+    DataHandler2 : source
+    DataHandler2 : depends
+    DataHandler2 : productionReady
+    DataHandler2 : importData()
+    DataHandler2 : prepareData()
+    DataHandler2 : annotateData()
+    DataHandler2 : mergeData()
+    DataHandler2 : describeData()
+  }
+}
+  package "DataUtils" <<Rectangle>> #DDDDDD {
+    abstract class DataModule
+    DataModule : name
+    DataModule : source
+    DataModule : depends
+    DataModule : productionReady
+    DataModule : importData()
+    DataModule : prepareData()
+    DataModule : annotateData()
+    DataModule : mergeData()
+    DataModule : describeData()
+    
+    class logging
+    logging : getLogger()
+    class utils
+    utils : nanableOr()
+    utils : combineBoolCols()
+    utils : castColumnsToBools()
+    utils : castColumnsToUpper()
+    utils : castColumnsToDateTime()
+    utils : ...
+    utils : ...  ()
+    
+    class validate
+    validate : datetime()
+    validate : int()
+    validate : country()
+    validate : number()
+    validate : list()
+    validate : bool()
+    validate : str()
+    validate : ...()
+  }
+ }
+
+class DataHandler1 implements DataModule
+class DataHandler2 implements DataModule
+
+main -down-> DataHandler1
+main -down-> DataHandler2
+main --> logging
+main --> validate
+DataHandler1 -down-> logging
+DataHandler2 -down-> logging
+
+DataHandler1 -down-> utils
+DataHandler2 -down-> utils
+
+Sphinx <--> TARCH
+
+note left of wikiData
+  wikiData depends on iGEMTeams, main will run 
+  them in the right order automatically.
+end note
+
+note bottom of logging
+  logging is used by every module
+  thus standardizing output from code
+  written by different people
+end note
+
+note bottom of utils
+  utils contains <i>many</i> functions that
+  are commonly used in manipulating data.
+  The functions should be written with unit
+  tests and with safe drop functions.
+end note
+
+note bottom of DataModule
+  DataModule is an Abstract Class that defines
+  how modules need to be written. Classes
+  that don't fit the schema can't be 
+  instantiated (or tested) without editing.
+end note
+
+note right of main
+  Main coordinates the modules and 
+  runs them in the right order. It also
+  manages user interaction with TARCH
+  from the command line/within python.
+end note
+
+note bottom of validate
+  validate is used by main to ensure that data 
+  meets specifications (eg. data is formatted 
+  correctly, column isn't all NaN, etc.)
+end note
+
+note right of Sphinx
+  Sphinx is used to autogenerate documentation 
+  from inline comments and function docu-strings
+end note
+
+@enduml

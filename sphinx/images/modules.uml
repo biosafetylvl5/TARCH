@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+
+rectangle "DATA IN" as di
+rectangle "DATA OUT" as do
+
+
+rectangle TARCH {
+  do <- (main)
+  (main) <- di
+  rectangle Modules {
+		"iGEMTeams" as (module1)
+		"wikiData" as (module2)
+		"..." as (module3)
+  		(main) <--> (module1)
+  		(main) <--> (module2)
+  		(main) <--> (module3)
+        (module2) .> (module1)
+  }
+}
+  
+  
+  note right of di{
+    Messy, undocumented,
+    multi-format, hard to work with
+  }
+  note right of do{
+    Clean, documented,
+    conforms to known schema, 
+    easy to work with
+  }
+@enduml

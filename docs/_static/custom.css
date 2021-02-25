@@ -1,0 +1,34 @@
+div.document{
+	width: 60%;
+	margin: auto;
+	padding-top: 3%;
+}
+
+div.sphinxsidebar{
+	width: 0;
+	visibility: hidden;
+}
+div.bodywrapper{
+	margin: 0;
+}
+div.body{
+	min-width: none;
+	max-width: none;
+}
+
+div.body h1, h2, h3{
+	padding-top: 10px;
+}
+.py{
+	margin-bottom: 25px;
+	padding-bottom: 25px;
+	border-bottom: 1px solid gray;
+
+}
+body{
+	font-size: 28px;
+}
+img {
+	display: block;
+	margin: auto;
+}

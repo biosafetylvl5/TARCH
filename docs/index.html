@@ -1,0 +1,988 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to TARCH’s documentation! &#8212; TARCH 0.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="static/custom.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-tarch-s-documentation">
+<h1>Welcome to TARCH’s documentation!<a class="headerlink" href="#welcome-to-tarch-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="tarch">
+<h1>TARCH<a class="headerlink" href="#tarch" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-tarch">
+<h2>What is TARCH?<a class="headerlink" href="#what-is-tarch" title="Permalink to this headline">¶</a></h2>
+<img alt="Purpose of TARCH" src="_images/purpose.svg" /><p>TARCH is a framework written in Python 3.8 for turning lots of messy real-world data into clean, documented and usable data for analysis. Special attention is paid to repeatability, self documentation and ease of use.</p>
+</div>
+<div class="section" id="why-should-i-use-tarch">
+<h2>Why should I use TARCH?<a class="headerlink" href="#why-should-i-use-tarch" title="Permalink to this headline">¶</a></h2>
+<img alt="TARCH is powered by modules" src="_images/badExample.svg" /><p>When working on a long project with lot’s of people coming and going, it is very easy to end up with a mess of scripts in a folder that need to be run in an arcane order that no one <em>truely</em> understands. On top of organizational concerns, documentation and understanding of raw data/processed data can be a monumetal task on it’s own. And we haven’t even mentioned the trials and tribulations of standardizing workflows! Worry not, TARCH is here to help.</p>
+<img alt="TARCH is powered by modules" src="_images/modules.svg" /><p>The goal of TARCH is to keep the simplicity and immediate ease-of-use of the “folder of scripts” method while providing structure and standardization to make scientists life easier when it’s time to replicate, check or verify their work. Additionally, TARCH is designed for an ever changing lab - startup is quick and easy so summer interns/research assistants can get working without a steep learning curve.</p>
+<img alt="TARCH provides utilities, logging and structure to modules" src="_images/dataUtils.svg" /><p>TARCH provides three sets of built in features - Logging, Validation and Utilities. Logging is straight forward - it provides a common interface to modules so that (a) you save time by not reimplementing it and (b) files written by different people output logs that are cohesive. Utilities provides &gt;60 functions for common data manipulation tasks (especially those related to cleaning poorly formatted data). Validation [WIP] reads a schema file and is used by main to validate the output of modules to ensure data is formatted correctly and consistently.</p>
+</div>
+<div class="section" id="structure-of-tarch">
+<h2>Structure of TARCH<a class="headerlink" href="#structure-of-tarch" title="Permalink to this headline">¶</a></h2>
+<img alt="Structure of TARCH" src="_images/detailed-composition.svg" /><p>The individual components of TARCH are described below. Sphinx is used to autogenerate documentation from inline docustrings.</p>
+</div>
+</div>
+<div class="section" id="module-dataUtils">
+<span id="datautils"></span><h1>DataUtils<a class="headerlink" href="#module-dataUtils" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="dataUtils.CustomNA">
+<em class="property">class </em><code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">CustomNA</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reason</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.CustomNA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used for variables that we want to treat as NA in analyses <em>but</em> want to flag for some reason</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reason</strong> (<em>str</em>) – message to raise when printing/displaying.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="dataUtils.DataModule">
+<em class="property">class </em><code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">DataModule</code><a class="headerlink" href="#dataUtils.DataModule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class that sets the layout for how all data modules must be written.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="dataUtils.ImpliedBool">
+<em class="property">class </em><code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">ImpliedBool</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em>, <em class="sig-param"><span class="n">string</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.ImpliedBool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used for variables that we want to treat as bool in analyses <em>but</em> want to flag for some reason</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>bool</em>) – bool value to “act” as</p></li>
+<li><p><strong>string</strong> (<em>str</em>) – message to raise when printing/displaying. Formatted with value so “eg: {}” becomes “eg: value”</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.applyMapRecursively">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">applyMapRecursively</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">function</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.applyMapRecursively" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply function to map a iterable to a new list interatively, helper function for castComplicatedColumn (below)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> (<em>list</em>) – input iterable to iterate over and translate to new list</p></li>
+<li><p><strong>function</strong> – function to apply</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Examples</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span>   <span class="n">testList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">applyMapRecursively</span><span class="p">(</span><span class="n">testList</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+<span class="go">[&quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="n">isOdd</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="k">if</span> <span class="n">isOdd</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>           <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="k">else</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>           <span class="k">return</span> <span class="s2">&quot;Even!&quot;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">applyMapRecursively</span><span class="p">(</span><span class="n">testList</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="go">[&quot;Even!&quot;, 3, &quot;Even!&quot;, 9]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.beautifyBool">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">beautifyBool</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">foo</span></em>, <em class="sig-param"><span class="n">warning</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.beautifyBool" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>warning</strong> (<em>bool</em>) – If True, returns warning symbol instead of red X if foo is False</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>emoji based on bool, green check mark if True</p>
+</dd>
+</dl>
+<p>Requires the <cite>emoji</cite> to return emojis.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.castColumn">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">castColumn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">column</span></em>, <em class="sig-param"><span class="n">function</span></em>, <em class="sig-param"><span class="n">logger</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">inPlace</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">replaceColumn</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.castColumn" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – pandas dataframe</p></li>
+<li><p><strong>column</strong> (<em>str</em>) – column name in df to cast</p></li>
+<li><p><strong>function</strong> (<em>function</em>) – casting function (anything that can be used via pandas .applymap)</p></li>
+<li><p><strong>logger</strong> – logging object</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – new name for casted column</p></li>
+<li><p><strong>inPlace</strong> (<em>bool</em>) – default True, modify df in place - if false return new DataFrame</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>depending on value of <em>inPlace</em>, return type is different</p>
+</div>
+<p>if inPlace is True</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>(str) name of new column</p>
+</dd>
+</dl>
+<p>if inPlace is False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns pandas.DataFrame, str</dt>
+<dd class="field-odd"><p>New modified column where each element of df column is mapped to function(element), name of new column</p>
+</dd>
+</dl>
+<p><strong>Examples</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;AAA&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                   <span class="s2">&quot;BBB&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                   <span class="s2">&quot;CCC&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span><span class="o">-</span><span class="mi">50</span><span class="p">]})</span>
+<span class="go">       AAA  BBB  CCC</span>
+<span class="go">    0    4   10  100</span>
+<span class="go">    1    5   20   50</span>
+<span class="go">    2    6   30  -30</span>
+<span class="go">    3    7   40  -50</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">castColumn</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="s2">&quot;AAA&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+<span class="go">&quot;f(AAA)&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">castColumn</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="s2">&quot;AAA&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Double AAA&quot;</span><span class="p">)</span>
+<span class="go">&quot;Double AAA&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">castColumn</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;AAA&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">inPlace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">(   AAA  BBB  CCC  f(AAA)</span>
+<span class="go"> 0    4   10  100       8</span>
+<span class="go"> 1    5   20   50      10</span>
+<span class="go"> 2    6   30  -30      12</span>
+<span class="go"> 3    7   40  -50      14,</span>
+<span class="go"> &#39;f(AAA)&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.castColumnsToBool">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">castColumnsToBool</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">suspectBoolCols</span></em>, <em class="sig-param"><span class="n">logger</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.castColumnsToBool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Safely casts columns to bool, logs actions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – input dataframe</p></li>
+<li><p><strong>suspectBoolCols</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – columns suspected to contain bool-like values</p></li>
+<li><p><strong>logger</strong> – logging logger object</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.castColumnsToDateTime">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">castColumnsToDateTime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">suspectDateCols</span></em>, <em class="sig-param"><span class="n">logger</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.castColumnsToDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Safely casts columns to DateTime, logs actions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – input dataframe</p></li>
+<li><p><strong>suspectDateCols</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – columns suspected to contain DateTime-like values</p></li>
+<li><p><strong>logger</strong> – logging logger object</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.castColumnsToTypeConstructor">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">castColumnsToTypeConstructor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">caster</span></em>, <em class="sig-param"><span class="n">castString</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">usePandasCasting</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.castColumnsToTypeConstructor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to generate safe caster objects</p>
+<p>Used to generate <cite>castColumnsToCategory</cite> and <cite>castColumnsToInt</cite> functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>caster</strong> (<em>function</em>) – function for casting column entries (eg, str. upper or int)</p></li>
+<li><p><strong>castString</strong> (<em>str</em>) – </p></li>
+<li><p><strong>usePandasCasting</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>column caster</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.castColumnsToUpper">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">castColumnsToUpper</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">cols</span></em>, <em class="sig-param"><span class="n">logger</span></em>, <em class="sig-param"><span class="n">handleNan</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.castColumnsToUpper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Safely casts columns to DateTime, logs actions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – input dataframe</p></li>
+<li><p><strong>cols</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – columns with str entries (or float(“Nan”)) to cast</p></li>
+<li><p><strong>logger</strong> – logging logger object</p></li>
+<li><p><strong>handleNan</strong> (<em>bool</em>) – if True, use upperHandleNan to cast</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.castComplicatedColumn">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">castComplicatedColumn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">originalCol</span></em>, <em class="sig-param"><span class="n">newCol</span></em>, <em class="sig-param"><span class="n">castDict</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">inPlace</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">tagOldColumn</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.castComplicatedColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p>df (DataFrame): dataframe to operate on
+originalCol (string): column to cast from df
+newCol (string): new name for cast column
+castDict (dict): mapping for casting
+exclude (list): list of excludeBy namedtuples to exclude via column and values of said column and replace with storeValue 
+inPlace: modify in place or return new df</p>
+<dl>
+<dt>returns:</dt><dd><dl class="simple">
+<dt>inPlace: True</dt><dd><p>DataFrame: new modified df with cast column newCol</p>
+</dd>
+</dl>
+</dd>
+<dt>example:</dt><dd><blockquote>
+<div><dl class="simple">
+<dt>df =    AAA    BBB    CCC</dt><dd><p>0    True   2      string1
+1    True   3      string2
+2    False  4      string3</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl>
+<dt>castComplicatedColumn(df, “AAA”, “cast(AAA)”, {True: “Yes”, False: “No”})</dt><dd><dl class="simple">
+<dt>df =    AAA    BBB    CCC      cast(AAA)</dt><dd><p>0    True   2      string1  Yes
+1    True   3      string2  Yes 
+2    False  4      string3  No</p>
+</dd>
+</dl>
+</dd>
+<dt>castComplicatedColumn(df, “AAA”, “cast(BBB)”, {2: “Valid”, 3:”Valid”, 4:”Invalid”}, inPlace=False) =&gt; dff</dt><dd><dl class="simple">
+<dt>dff =    AAA    BBB   cast(BBB)   CCC</dt><dd><p>0    True   2     Valid       string1
+1    True   3     Valid       string2
+2    False  4     Invalid     string3</p>
+</dd>
+</dl>
+</dd>
+<dt>castComplicatedColumn(df, “CCC”, “cast(CCC)”, {“string1”: “A”, “string2”: “B”, “string3”: “C”}, </dt><dd><blockquote>
+<div><p>exclude=[excludeBy(colName=”AAA”, values=[False], storeValue=NC)])</p>
+</div></blockquote>
+<dl class="simple">
+<dt>df =    AAA    BBB    CCC      cast(CCC)</dt><dd><p>0    True   2      string1  A
+1    True   3      string2  B
+2    False  4      string3  NC</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.combineBoolCols">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">combineBoolCols</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">cols</em>, <em class="sig-param">function=&lt;function nanableOr&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.combineBoolCols" title="Permalink to this definition">¶</a></dt>
+<dd><p>df (DataFrame): input dataframe
+cols (list): list of column names of cols in df to merge
+function (function, optional): function to use to merge columns, must take two arguments</p>
+<p>returns: (list) new, merged column</p>
+<p>examples:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>df =    AAA   BBB   CCC</dt><dd><p>0    False False True
+1    False True  False
+2    True  False False
+3    False True  True</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>combineBoolCols(df, [“AAA”, “BBB”]) =&gt; [False, True, True, True]
+combineBoolCols(df, [“CCC”, “BBB”]) =&gt; [True, True, False, True]</p>
+<p>combineBoolCols(df, [“AAA”, “BBB”, “CCC”]) =&gt; [True, True, True, True]</p>
+<p>combineBoolCols(df, [“AAA”, “BBB”], function=lambda x,y: True) =&gt; [True, True, True, True]
+combineBoolCols(df, [“AAA”, “BBB”], function=lambda x,y: “Pineapple”) =&gt; [“Pineapple”, “Pineapple”, “Pineapple”, “Pineapple”]</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="dataUtils.excludeBy">
+<em class="property">class </em><code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">excludeBy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">colName</span></em>, <em class="sig-param"><span class="n">values</span></em>, <em class="sig-param"><span class="n">storeValue</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.excludeBy" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py attribute">
+<dt id="dataUtils.excludeBy.colName">
+<code class="sig-name descname">colName</code><a class="headerlink" href="#dataUtils.excludeBy.colName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="dataUtils.excludeBy.storeValue">
+<code class="sig-name descname">storeValue</code><a class="headerlink" href="#dataUtils.excludeBy.storeValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="dataUtils.excludeBy.values">
+<code class="sig-name descname">values</code><a class="headerlink" href="#dataUtils.excludeBy.values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.expDict">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">expDict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dic</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.expDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flattens dictionary objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dic</strong> (<em>dict</em>) – input dictonary (eg. {[1,”Yes”]: True, [0, “No”]: False})</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>expanded dict, see examples below for clarity</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p><strong>Examples:</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">expDict</span><span class="p">({(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">):</span> <span class="kc">True</span><span class="p">})</span>
+<span class="go">{1: True, &quot;Yes&quot;: True}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expDict</span><span class="p">({</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;a&quot;</span><span class="p">})</span>
+<span class="go">{1: a}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expDict</span><span class="p">({</span><span class="mi">1</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">)})</span>
+<span class="go">{1: (&quot;a&quot;, &quot;b&quot;)}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expDict</span><span class="p">({(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span><span class="kc">True</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="kc">False</span><span class="p">})</span>
+<span class="go">RuntimeError(&quot;Overlapping Keys&quot;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.fillBlanksWithNa">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">fillBlanksWithNa</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">logger</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.fillBlanksWithNa" title="Permalink to this definition">¶</a></dt>
+<dd><p>replaces ‘’ with np.nan</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – </p></li>
+<li><p><strong>logger</strong> (<em>logger object</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.getBoolCaster">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">getBoolCaster</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">convBlankTo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.getBoolCaster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a function that can cast bools and blank strings to bools</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>convBlankTo</strong> – what to convert blanks to in returned caster (ideally bool)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>takes in string and converts s to boolFromString(s) unless blank, then returns convBlankTo</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>function</p>
+</dd>
+</dl>
+<p><strong>Examples:</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">getBoolCaster</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">(</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">getBoolCaster</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">(</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">getBoolCaster</span><span class="p">(</span><span class="s2">&quot;anything can go here&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="p">(</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="go">&quot;anything can go here&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.getDescriptions">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">getDescriptions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.getDescriptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>pulls column descriptions from xlsx/csv files and returns a dict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>column -&gt; dict{“description”: text description, “follow-up”: needs follow-up, “questions”: pending questions, “assumptions”: assumptions}</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.getLogger">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">getLogger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module</span></em>, <em class="sig-param"><span class="n">forceString</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.getLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns logger based on module name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>module</strong> – ostensibly any object, written with utils.DataModule in mind</p></li>
+<li><p><strong>forceString</strong> (<em>bool</em>) – use if module.name() isn’t implemented / doesn’t return a string</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.igemDatabaseJSONToDataFrame">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">igemDatabaseJSONToDataFrame</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">messy</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.igemDatabaseJSONToDataFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes in exported JSON and returns pandas.DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – input .json file</p></li>
+<li><p><strong>messy</strong> (<em>bool</em>) – some exports are “messy” and have poor delimiter formatting - setting this to True enables import of these files as well</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dataframe containing JSON data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+<p><strong>Examples</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">json</span> <span class="o">=</span> <span class="s1">&#39;AAA;BBB;CCC;</span><span class="se">\n</span><span class="s1">1;2;&quot;string&quot;;&#39;</span> <span class="c1"># file contents</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">igemDatabaseJSONToDataFrame</span><span class="p">(</span><span class="s2">&quot;a.json&quot;</span><span class="p">)</span>
+<span class="go">   AAA  BBB       CCC</span>
+<span class="go">0    1    2    string</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.initLogging">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">initLogging</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.initLogging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes logging, adds an explicit logging level for ‘DATADROP’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>logger object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.messyBoolCaster">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">messyBoolCaster</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">string</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.messyBoolCaster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes string and casts to bool
+:param string: input string to cast
+:type string: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>if string “1”, “True” or “true”</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+<p><strong>Examples</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">messyBoolCaster</span><span class="p">(</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">messyBoolCaster</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">messyBoolCaster</span><span class="p">(</span><span class="s2">&quot;true&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">messyBoolCaster</span><span class="p">(</span><span class="s2">&quot;False&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">messyBoolCaster</span><span class="p">(</span><span class="s2">&quot;blah blah blah&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.nanableNot">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">nanableNot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.nanableNot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not function that can take Nan values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>bool</em><em>, </em><em>NaN</em>) – input</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>np.nan if x is (some form of) nan else not x</p>
+</dd>
+</dl>
+<p><strong>Examples</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nanableNot</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nanableNot</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nanableNot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="go">np.nan</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nanableNot</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;Nan&quot;</span><span class="p">))</span>
+<span class="go">np.nan</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.nanableOr">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">nanableOr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.nanableOr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Or function that can take Nan values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>bool</em><em>, </em><em>nan</em>) – input one</p></li>
+<li><p><strong>y</strong> (<em>bool</em><em>, </em><em>nan</em>) – input two</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>bool if both nan, x if y is nan, y if x is nan else x or y (see table below)</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 18%" />
+<col style="width: 15%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td colspan="2" rowspan="2"></td>
+<td colspan="3"><p>Value of X</p></td>
+</tr>
+<tr class="row-even"><td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>Nan</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>Value of Y</p></td>
+<td><p>True</p></td>
+<td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>Nan</p></td>
+</tr>
+<tr class="row-even"><td><p>False</p></td>
+<td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>Nan</p></td>
+<td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>Nan</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.queryDatabase">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">queryDatabase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">query</span></em>, <em class="sig-param"><span class="n">database</span></em>, <em class="sig-param"><span class="n">host</span><span class="o">=</span><span class="default_value">'127.0.0.1'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.queryDatabase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries database and saves data to a local pickle OR if mode is local, read query data from pickle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>str</em>) – SQL Query</p></li>
+<li><p><strong>database</strong> (<em>str</em>) – database to query</p></li>
+<li><p><strong>host</strong> (<em>str</em>) – database host, default 127.0.0.1</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.removeQuotesIfThere">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">removeQuotesIfThere</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">quotedString</span></em>, <em class="sig-param"><span class="n">useSingleQuote</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.removeQuotesIfThere" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes quotes from string.
+Fails silently, only removes quotes if there - if not, just returns quotedString</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>quotedString</strong> (<em>str</em>) – input string to remove quotes from</p></li>
+<li><p><strong>useSingleQuote</strong> (<em>bool</em>) – if True remove single (‘) quote instead of default False (“)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return string</dt>
+<dd class="field-even"><p>quotedString with at max two chars removed from the beginning and end.</p>
+</dd>
+</dl>
+<p><strong>Examples:</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">removeQuotesIfThere</span><span class="p">(</span><span class="s1">&#39;&quot;test&quot;&#39;</span><span class="p">)</span>
+<span class="go">&#39;test&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">removeQuotesIfThere</span><span class="p">(</span><span class="s1">&#39;&quot;test&#39;</span><span class="p">)</span>
+<span class="go">&#39;&quot;test&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">removeQuotesIfThere</span><span class="p">(</span><span class="s2">&quot;&#39;test&#39;&quot;</span><span class="p">)</span>
+<span class="go">&quot;&#39;test&#39;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">removeQuotesIfThere</span><span class="p">(</span><span class="s2">&quot;&#39;test&#39;&quot;</span><span class="p">,</span> <span class="n">useSingleQuote</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&quot;test&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.safeDropColumn">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">safeDropColumn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">col</span></em>, <em class="sig-param"><span class="n">logger</span></em>, <em class="sig-param"><span class="n">reason</span></em>, <em class="sig-param"><span class="n">reasontext</span><span class="o">=</span><span class="default_value">' '</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.safeDropColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drops rows with specific values in col (with logging) unless –no-drop flag has been explicitly set to ignore.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – input dataframe</p></li>
+<li><p><strong>col</strong> (<em>str</em>) – column to drop</p></li>
+<li><p><strong>logger</strong> – logger object</p></li>
+<li><p><strong>reason</strong> (<em>str</em>) – reason for dropping (many standard options defined in dataUtils)</p></li>
+<li><p><strong>reasontext</strong> (<em>str</em>) – extended reason for dropping, a place for notes to future you</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.safeDropDuplicates">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">safeDropDuplicates</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">cols</span></em>, <em class="sig-param"><span class="n">logger</span></em>, <em class="sig-param"><span class="n">reason</span></em>, <em class="sig-param"><span class="n">reasontext</span><span class="o">=</span><span class="default_value">' '</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.safeDropDuplicates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drops duplicate columns with logging unless –no-drop flag has been explicitly set to ignore.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – input dataframe</p></li>
+<li><p><strong>cols</strong> (<em>list</em><em> (</em><em>of strings</em><em>)</em>) – columns to drop</p></li>
+<li><p><strong>logger</strong> – logger object</p></li>
+<li><p><strong>reason</strong> (<em>str</em>) – reason for dropping (many standard options defined in dataUtils)</p></li>
+<li><p><strong>reasontext</strong> (<em>str</em>) – extended reason for dropping, a place for notes to future you</p></li>
+<li><p><strong>args</strong> – args to pass to pd.DataFrame.drop_duplicates</p></li>
+<li><p><strong>kwargs</strong> – kwargs to pass to pd.DataFrame.drop_duplicates</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.safeDropEmptyCols">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">safeDropEmptyCols</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">logger</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.safeDropEmptyCols" title="Permalink to this definition">¶</a></dt>
+<dd><p>safely drop empty cols (log to info level columns that are dropped)</p>
+<p>An empty column is one that only contains <strong>one</strong> of the following: “”, ” ” or None</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – </p></li>
+<li><p><strong>logger</strong> (<em>logger object</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.safeDropNARows">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">safeDropNARows</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">logger</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.safeDropNARows" title="Permalink to this definition">¶</a></dt>
+<dd><p>safely drop all NA rows</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – </p></li>
+<li><p><strong>logger</strong> (<em>logger object</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.safeDropRowByColValues">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">safeDropRowByColValues</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">col</span></em>, <em class="sig-param"><span class="n">values</span></em>, <em class="sig-param"><span class="n">logger</span></em>, <em class="sig-param"><span class="n">reason</span></em>, <em class="sig-param"><span class="n">reasontext</span><span class="o">=</span><span class="default_value">' '</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.safeDropRowByColValues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drops rows with specific values in col (with logging) unless –no-drop flag has been explicitly set to ignore.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – input dataframe</p></li>
+<li><p><strong>col</strong> (<em>str</em>) – column to search</p></li>
+<li><p><strong>values</strong> (<em>list</em>) – values to search for</p></li>
+<li><p><strong>logger</strong> – logger object</p></li>
+<li><p><strong>reason</strong> (<em>str</em>) – reason for dropping (many standard options defined in dataUtils)</p></li>
+<li><p><strong>reasontext</strong> (<em>str</em>) – extended reason for dropping, a place for notes to future you</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.settify">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">settify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">cols</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.settify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns set of possible values ordered by order of cols</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – input dataframe</p></li>
+<li><p><strong>cols</strong> (<em>list</em><em>, </em><em>str</em>) – col(s) to settify</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>of possible values ordered by order of cols (see examples)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>set</p>
+</dd>
+</dl>
+<p><strong>Examples</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;AAA&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Cat&quot;</span><span class="p">,</span><span class="s2">&quot;Cat&quot;</span><span class="p">,</span><span class="s2">&quot;Dog&quot;</span><span class="p">,</span><span class="s2">&quot;Dog&quot;</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                   <span class="s2">&quot;BBB&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Black&quot;</span><span class="p">,</span><span class="s2">&quot;Black&quot;</span><span class="p">,</span><span class="s2">&quot;White&quot;</span><span class="p">,</span><span class="s2">&quot;Grey&quot;</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                   <span class="s2">&quot;CCC&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">         AAA   BBB   CCC</span>
+<span class="go">    0    Cat   Black 0</span>
+<span class="go">    1    Cat   Black 5</span>
+<span class="go">    2    Dog   White 10</span>
+<span class="go">    3    Dog   Grey  10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settify</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;AAA&quot;</span><span class="p">])</span>
+<span class="go">{&quot;Cat&quot;, &quot;Dog&quot;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settify</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;BBB&quot;</span><span class="p">])</span>
+<span class="go">{&quot;Black&quot;, &quot;White&quot;, &quot;Grey&quot;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settify</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;AAA&quot;</span><span class="p">,</span> <span class="s2">&quot;BBB&quot;</span><span class="p">])</span>
+<span class="go">{(&quot;Cat&quot;, &quot;Black&quot;), (&quot;Dog&quot;, &quot;White&quot;), (&quot;Dog&quot;, &quot;Grey&quot;)}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settify</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;AAA&quot;</span><span class="p">,</span> <span class="s2">&quot;CCC&quot;</span><span class="p">])</span>
+<span class="go">{(&quot;Cat&quot;, 0), (&quot;Cat&quot;, 5), (&quot;Dog&quot;, 10)}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settify</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;AAA&quot;</span><span class="p">,</span> <span class="s2">&quot;CCC&quot;</span><span class="p">,</span> <span class="s2">&quot;BBB&quot;</span><span class="p">])</span>
+<span class="go">{(&quot;Cat&quot;, 0, &quot;Black&quot;), (&quot;Cat&quot;, 5, &quot;Black&quot;), (&quot;Dog&quot;, 10, &quot;White&quot;), (&quot;Dog&quot;, 10, &quot;Grey&quot;)}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.splitByString">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">splitByString</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">string</span></em>, <em class="sig-param"><span class="n">splitString</span></em>, <em class="sig-param"><span class="n">excludeString</span></em>, <em class="sig-param"><span class="n">skipLast</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.splitByString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Splits string by splitString unless surronded by exludeString</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em>) – input string to operate on</p></li>
+<li><p><strong>splitString</strong> (<em>str</em>) – string to split by</p></li>
+<li><p><strong>excludeString</strong> (<em>str</em>) – string to escape splitting</p></li>
+<li><p><strong>skipLast</strong> (<em>bool</em>) – Skip last string</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns list</dt>
+<dd class="field-even"><p>string split into substring list elements</p>
+</dd>
+</dl>
+<p><strong>Examples</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">splitByString</span><span class="p">(</span><span class="s2">&quot;a;b&quot;</span><span class="p">,</span> <span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="s2">&quot;%&quot;</span><span class="p">)</span>
+<span class="go">[&quot;a&quot;, &quot;b&quot;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">splitByString</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%a</span><span class="s2">;b%&quot;</span><span class="p">,</span> <span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="s2">&quot;%&quot;</span><span class="p">)</span>
+<span class="go">[&quot;%a;b%&quot;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">splitByString</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%a</span><span class="s2">;b&quot;</span><span class="p">,</span> <span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="s2">&quot;%&quot;</span><span class="p">)</span>
+<span class="go">[&quot;%a;b&quot;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">splitByString</span><span class="p">(</span><span class="s2">&quot;a;b%&quot;</span><span class="p">,</span> <span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="s2">&quot;%&quot;</span><span class="p">)</span>
+<span class="go">[&quot;a&quot;, &quot;b%&quot;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.stripHandleNan">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">stripHandleNan</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.stripHandleNan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just like str.strip but returns np.nan if input is in [“nan”, “NaN”, “Nan”]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input</strong> (<em>str</em><em>, </em><em>float</em>) – input string or Nan (np.nan or NaN handled)</p>
+</dd>
+</dl>
+<p><strong>Examples</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">upperHandleNan</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">)</span>
+<span class="go">&quot;HI&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">upperHandleNan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="go">np.nan</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">upperHandleNan</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;Nan&quot;</span><span class="p">))</span>
+<span class="go">np.nan</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.tagDf">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">tagDf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">tag</span></em>, <em class="sig-param"><span class="n">logger</span></em>, <em class="sig-param"><span class="n">exempt</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.tagDf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns df with ‘tagged’ column names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – dataframe to tag</p></li>
+<li><p><strong>tag</strong> (<em>str</em>) – tag to append to all column names</p></li>
+<li><p><strong>exempt</strong> (<em>list</em>) – columns to skip when appending tags</p></li>
+<li><p><strong>inplace</strong> (<em>bool</em>) – default True, modify df in place - if false return new DataFrame</p></li>
+</ul>
+</dd>
+</dl>
+<p>if inPlace is False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>df with new column names</p>
+</dd>
+</dl>
+<p><strong>Examples</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;AAA&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                   <span class="s2">&quot;BBB&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                   <span class="s2">&quot;CCC&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span><span class="o">-</span><span class="mi">50</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">       AAA  BBB  CCC</span>
+<span class="go">    0    4   10  100</span>
+<span class="go">    1    5   20   50</span>
+<span class="go">    2    6   30  -30</span>
+<span class="go">    3    7   40  -50</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tagDf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;_cat&quot;</span><span class="p">)</span>
+<span class="go">       AAA_cat  BBB_cat  CCC_cat</span>
+<span class="go">    0        4       10      100</span>
+<span class="go">    1        5       20       50</span>
+<span class="go">    2        6       30      -30</span>
+<span class="go">    3        7       40      -50</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tagDf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;_new&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># doesn&#39;t return anything</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">       AAA_new  BBB_new  CCC_new</span>
+<span class="go">    0        4       10      100</span>
+<span class="go">    1        5       20       50</span>
+<span class="go">    2        6       30      -30</span>
+<span class="go">    3        7       40      -50</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.upperHandleNan">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">upperHandleNan</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.upperHandleNan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just like str.upper but returns np.nan if input is in [“nan”, “NaN”, “Nan”]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input</strong> (<em>str</em><em>, </em><em>float</em>) – input string or Nan (np.nan or NaN handled)</p>
+</dd>
+</dl>
+<p><strong>Examples</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">upperHandleNan</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">)</span>
+<span class="go">&quot;HI&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">upperHandleNan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="go">np.nan</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">upperHandleNan</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;Nan&quot;</span><span class="p">))</span>
+<span class="go">np.nan</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dataUtils.verifyVersioning">
+<code class="sig-prename descclassname">dataUtils.</code><code class="sig-name descname">verifyVersioning</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dataUtils.verifyVersioning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifies versions of important packages and python installation, raises exception and quits if versions aren’t
+correct</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="dev">
+<h1>Dev<a class="headerlink" href="#dev" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="testModuleNoData.TestClass">
+<em class="property">class </em><code class="sig-prename descclassname">testModuleNoData.</code><code class="sig-name descname">TestClass</code><a class="headerlink" href="#testModuleNoData.TestClass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">TARCH</a></h1>
+
+
+
+
+
+
+
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="163px" preserveAspectRatio="none" style="width:995px;height:163px;" version="1.1" viewBox="0 0 995 163" width="995px" zoomAndPan="magnify"><defs><filter height="300%" id="fsyl4d7rhghy3" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[5dfe1150c87218a9f0b25c58295c84f7]
+cluster folder--><polygon fill="#FFFFFF" filter="url(#fsyl4d7rhghy3)" points="132,59.049,337,59.049,344,81.3459,900,81.3459,900,146.049,132,146.049,132,59.049" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="132" x2="344" y1="81.3459" y2="81.3459"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="199" x="136" y="74.0441">Folder on your computer</text><!--MD5=[f83ae91a690dfc657e1c5fbbd818f13d]
+entity a--><polygon fill="#FEFECE" filter="url(#fsyl4d7rhghy3)" points="148.5,94.049,148.5,130.3459,225.5,130.3459,225.5,104.049,215.5,94.049,148.5,94.049" style="stroke: #000000; stroke-width: 1.5;"/><path d="M215.5,94.049 L215.5,104.049 L225.5,104.049 " fill="#FEFECE" style="stroke: #000000; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="57" x="158.5" y="117.0441">Script 1</text><!--MD5=[5d12e840fb55afd9ed7b3559a638e8f7]
+entity b--><polygon fill="#FEFECE" filter="url(#fsyl4d7rhghy3)" points="261,94.049,261,130.3459,337,130.3459,337,104.049,327,94.049,261,94.049" style="stroke: #000000; stroke-width: 1.5;"/><path d="M327,94.049 L327,104.049 L337,104.049 " fill="#FEFECE" style="stroke: #000000; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="56" x="271" y="117.0441">Script 2</text><!--MD5=[8e9b2d9d80e066cced8e5d90e9bdea61]
+entity c--><polygon fill="#FEFECE" filter="url(#fsyl4d7rhghy3)" points="695,94.049,695,130.3459,773,130.3459,773,104.049,763,94.049,695,94.049" style="stroke: #000000; stroke-width: 1.5;"/><path d="M763,94.049 L763,104.049 L773,104.049 " fill="#FEFECE" style="stroke: #000000; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="58" x="705" y="117.0441">Script A</text><!--MD5=[011db1d27274c86691871bc51b12beb8]
+entity d--><polygon fill="#FEFECE" filter="url(#fsyl4d7rhghy3)" points="808,94.049,808,130.3459,884,130.3459,884,104.049,874,94.049,808,94.049" style="stroke: #000000; stroke-width: 1.5;"/><path d="M874,94.049 L874,104.049 L884,104.049 " fill="#FEFECE" style="stroke: #000000; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="56" x="818" y="117.0441">Script 4</text><!--MD5=[e32773a0da76c445e84e5885468a4484]
+entity e--><polygon fill="#FEFECE" filter="url(#fsyl4d7rhghy3)" points="372.5,94.049,372.5,130.3459,547.5,130.3459,547.5,104.049,537.5,94.049,372.5,94.049" style="stroke: #000000; stroke-width: 1.5;"/><path d="M537.5,94.049 L537.5,104.049 L547.5,104.049 " fill="#FEFECE" style="stroke: #000000; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="155" x="382.5" y="117.0441">Script by old postdoc</text><!--MD5=[8f89c3b771be60a8fe1c771d5b27a045]
+entity f--><polygon fill="#FEFECE" filter="url(#fsyl4d7rhghy3)" points="582.5,94.049,582.5,130.3459,659.5,130.3459,659.5,104.049,649.5,94.049,582.5,94.049" style="stroke: #000000; stroke-width: 1.5;"/><path d="M649.5,94.049 L649.5,104.049 L659.5,104.049 " fill="#FEFECE" style="stroke: #000000; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="57" x="592.5" y="117.0441">Script 5</text><!--MD5=[23ed0539382aa633e2b671a13e0bf3d6]
+entity os--><ellipse cx="951" cy="81.049" fill="#FEFECE" filter="url(#fsyl4d7rhghy3)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.5;"/><path d="M951,89.049 L951,116.049 M938,97.049 L964,97.049 M951,116.049 L938,131.049 M951,116.049 L964,131.049 " fill="none" filter="url(#fsyl4d7rhghy3)" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="64" x="919" y="149.5441">Scientist</text><!--MD5=[c807758c2e9e0d1754c3d4b69a0f6713]
+entity i--><rect fill="#FEFECE" filter="url(#fsyl4d7rhghy3)" height="39.2969" style="stroke: #000000; stroke-width: 1.5;" width="106" x="7" y="92.549"/><polygon fill="#FEFECE" points="96,97.549,96,111.549,108,111.549,108,103.549,102,97.549,96,97.549" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="102" x2="102" y1="97.549" y2="103.549"/><line style="stroke: #000000; stroke-width: 1.5;" x1="108" x2="102" y1="103.549" y2="103.549"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="76" x="17" y="118.5441">Input Data</text><!--MD5=[30da9764a929da2c2b46c4d4a4c394d8]
+link i to a--><path d="M113.082,112.049 C123.081,112.049 133.08,112.049 143.08,112.049 " fill="none" id="i-to-a" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="148.309,112.049,139.309,108.049,143.309,112.049,139.309,116.049,148.309,112.049" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[a3deb68e4aebbeb113ddd128f6b25b58]
+link a to b--><path d="M225.938,112.049 C235.821,112.049 245.704,112.049 255.588,112.049 " fill="none" id="a-to-b" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="260.756,112.049,251.756,108.049,255.756,112.049,251.756,116.049,260.756,112.049" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[ead6c585707f27584d13e9a8010ea145]
+link b to e--><path d="M337.049,112.049 C347.001,112.049 356.953,112.049 366.905,112.049 " fill="none" id="b-to-e" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="372.109,112.049,363.109,108.049,367.109,112.049,363.109,116.049,372.109,112.049" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[f4853a1f2d9431db6d4ed2e8f95df8f7]
+link e to f--><path d="M547.732,112.049 C557.562,112.049 567.392,112.049 577.222,112.049 " fill="none" id="e-to-f" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="582.363,112.049,573.363,108.049,577.363,112.049,573.363,116.049,582.363,112.049" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[094176178aa5f752a171a49f04f42d6a]
+link f to d--><path d="M629.548,93.9418 C641.042,71.994 663.762,36.083 695.5,21.049 C726.829,6.208 742.27,6 773.5,21.049 C802.721,35.129 823.809,67.3499 835.47,89.4135 " fill="none" id="f-to-d" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="837.815,93.9573,837.2418,84.1251,835.5219,89.5142,830.1328,87.7942,837.815,93.9573" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[c32e70a63422f2b6e9da784439df6a63]
+link f to c--><path d="M659.844,112.049 C669.793,112.049 679.742,112.049 689.691,112.049 " fill="none" id="f-to-c" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="694.894,112.049,685.894,108.049,689.894,112.049,685.894,116.049,694.894,112.049" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[efa4e25132b9cf5f6f10cc7c80a3bb65]
+link c to d--><path d="M773.375,112.049 C783.199,112.049 793.024,112.049 802.848,112.049 " fill="none" id="c-to-d" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="807.985,112.049,798.985,108.049,802.985,112.049,798.985,116.049,807.985,112.049" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[2c54641f16694e0caa5edb5f0fac49ee]
+link d to os--><path d="M884.145,112.049 C894.004,112.049 903.863,112.049 913.722,112.049 " fill="none" id="d-to-os" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="918.878,112.049,909.878,108.049,913.878,112.049,909.878,116.049,918.878,112.049" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[0aeabf251f3ae3262f698f02c78696d0]
+@startuml
+actor "Scientist" as os
+artifact "Input Data" as i
+folder "Folder on your computer" as folder {
+
+file "Script 1" as a
+file "Script 2" as b
+file "Script A" as c
+file "Script 4" as d
+file "Script by old postdoc" as e
+file "Script 5" as f
+}
+
+i->a
+a->b
+b->e
+e->f
+f->d
+f->c
+c->d
+
+d- - - - -right- ->os
+@enduml
+
+PlantUML version 1.2020.17beta5(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
