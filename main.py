@@ -119,29 +119,36 @@ def sortDataModules(unsortedModules):
 
 class MasterFrameClass():
     def __init__(self):
-        self.frames = {}
+        self.frames = []
+        self.frameNames = []
 
     def storeComponent(self, data, generator, source):
-        return
+        self.addNewFrame(generator, data)
 
     def getFrame(self, framename):
-        return self.frames[framename]
+        try:
+            return self.frames[self.frameNames.index(framename)]
+        except ValueError as e:
+            if framename not in self.frameNames:
+                dut.l.critical(f"Frame {framename} doesn't exist.")
+            raise e
 
     def updateFrame(self, framename, updatedFrame):
-        self.frames[framename] = updatedFrame
+        self.frames[self.frameNames.index(framename)] = updatedFrame
 
     def export(self, path):
         # TODO: write this,, better.
-        for key in self.frames:
-            with open(os.path.join(path, key + ".json"), "w") as f:
-                f.write(self.frames[key].to_json())
+        for key in self.frameNames:
+            with open(os.path.join(path, key + ".csv"), "w") as f:
+                f.write(self.frames[self.frameNames.index(key)].to_csv())
 
     def addNewFrame(self, frameName, frame):
-        self.frames[frameName] = frame
+        self.frames.append(frame.copy())
+        self.frameNames.append(frameName)
 
 dut.l.info("Loading Modules...")
 
-dataModules = getDataModules("./modules")
+dataModules = getDataModules("./modules") + getDataModules("./processors")
 dataModules = sortDataModules(dataModules)
 
 MasterFrame = MasterFrameClass()
@@ -151,15 +158,17 @@ dut.l.info("Done.")
 for dataModule in dataModules:
     timeStart = time.time()
     dut.l.info("Running {0}...".format(dataModule.name()))
-    dataModule.importData()
-    dataModule.setCheckpoint()
+    dataModule.importData(MasterFrame)
+    #dataModule.setCheckpoint()
     dataModule.prepareData()
-    dataModule.logChanges()
-    annotatedData = dataModule.annotateData()
-    MasterFrame.storeComponent(annotatedData, generator=dataModule.name(), source=dataModule.source())
+    #dataModule.logChanges()
+    dataModule.annotateData()
     dataModule.mergeData(MasterFrame)
-    dut.l.info("Done! (took {0}ms)".format(round(1000 * (time.time() - timeStart))))
+    MasterFrame.storeComponent(dataModule.data, generator=dataModule.name(), source=dataModule.source())
+    dut.l.info("{} finished! (took {}ms)".format(dataModule.name(), round(1000 * (time.time() - timeStart))))
 
 dut.l.info("Exporting data...")
+if not os.path.exists("./exports"):
+    os.mkdir("exports")
 MasterFrame.export("./exports")
 dut.l.info("All done! Exiting...")

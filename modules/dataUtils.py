@@ -21,7 +21,7 @@ user = ""
 password = ""
 port = ""
 
-mode = "local"
+mode = "remote"
 
 yesTuple = ("YES", "Yes", "yes", "Y", "Yes ", "yes ", "YES ", "y")
 noTuple = ("NO", "No", "no", "N", "n")
