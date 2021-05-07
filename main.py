@@ -1,5 +1,12 @@
-import importlib, os, time, argparse
-from modules import dataUtils as dut
+import importlib, os, time, argparse, sys
+
+# TARCHs path
+PATH = os.path.dirname(os.path.abspath(__file__))
+#sys.path.insert(1, PATH)
+
+import dataUtils as dut
+
+DataModule = dut.DataModule
 
 parser = argparse.ArgumentParser(description='Tardigrade Architecture Data Processing (TARCH)')
 parser.add_argument('-nd', '--no-drop', type=str, action='append', default=None,
@@ -17,10 +24,6 @@ parser.add_argument('--file-logging-level', type=str, action='store', default="D
 parser.add_argument('--log-file', const=str, action='store_const', default="tarch.log",
                     help='file to log to (default: %(default)s)')
 
-args = parser.parse_args()
-dut.logFilename = dut.getFile(args.log_file)
-if args.no_drop is not None:
-    dut.ignoreDrop = args.no_drop # implement arg actions
 
 
 def fullSplitPath(path):
@@ -50,15 +53,12 @@ def getDataModules(path):
     """
     modules = []
     for root, dirs, files in os.walk(path):
-        for subDir in dirs:
-            modules.extend(getDataModules(subDir))
         for file in files:
             if "__pycache__" in root:
                 continue
             try:
                 if ".py" in file:
-                    moduleImportString = fullSplitPath(str(os.path.join(root, file.replace(".py", ""))))
-                    moduleImportString = ".".join(moduleImportString)
+                    moduleImportString = "modules."+file.replace(".py", "")
                     module = importlib.import_module(moduleImportString)
                     try:
                         try:
@@ -146,29 +146,34 @@ class MasterFrameClass():
         self.frames.append(frame.copy())
         self.frameNames.append(frameName)
 
-dut.l.info("Loading Modules...")
+if __name__ == "__main__":
+    CWD = os.getcwd()
+    sys.path.insert(1, CWD)
+    args = parser.parse_args()
+    dut.logFilename = dut.getFile(args.log_file)
+    if args.no_drop is not None:
+        dut.ignoreDrop = args.no_drop # implement arg actions
 
-dataModules = getDataModules("./modules") + getDataModules("./processors")
-dataModules = sortDataModules(dataModules)
+    dut.l.info("Loading Modules...")
 
-MasterFrame = MasterFrameClass()
+    dataModules = getDataModules(CWD+"/modules")
+    dataModules = sortDataModules(dataModules)
 
-dut.l.info("Done.")
+    MasterFrame = MasterFrameClass()
+    for dataModule in dataModules:
+        timeStart = time.time()
+        dut.l.info("Running {0}...".format(dataModule.name()))
+        dataModule.importData(MasterFrame)
+        #dataModule.setCheckpoint()
+        dataModule.prepareData()
+        #dataModule.logChanges()
+        dataModule.annotateData()
+        dataModule.mergeData(MasterFrame)
+        MasterFrame.storeComponent(dataModule.data, generator=dataModule.name(), source=dataModule.source())
+        dut.l.info("{} finished! (took {}ms)".format(dataModule.name(), round(1000 * (time.time() - timeStart))))
 
-for dataModule in dataModules:
-    timeStart = time.time()
-    dut.l.info("Running {0}...".format(dataModule.name()))
-    dataModule.importData(MasterFrame)
-    #dataModule.setCheckpoint()
-    dataModule.prepareData()
-    #dataModule.logChanges()
-    dataModule.annotateData()
-    dataModule.mergeData(MasterFrame)
-    MasterFrame.storeComponent(dataModule.data, generator=dataModule.name(), source=dataModule.source())
-    dut.l.info("{} finished! (took {}ms)".format(dataModule.name(), round(1000 * (time.time() - timeStart))))
-
-dut.l.info("Exporting data...")
-if not os.path.exists("./exports"):
-    os.mkdir("exports")
-MasterFrame.export("./exports")
-dut.l.info("All done! Exiting...")
+    dut.l.info("Exporting data...")
+    if not os.path.exists(CWD+"/exports"):
+        os.mkdir("exports")
+    MasterFrame.export(CWD+"/exports")
+    dut.l.info("All done! Exiting...")

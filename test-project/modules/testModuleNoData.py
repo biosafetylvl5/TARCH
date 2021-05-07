@@ -7,16 +7,23 @@ docstring: This module is for testing, it imports no data and performs no operat
 """
 
 try:
-    from . import dataUtils as dut
+    from tarch import datamodule
+    from main import dut
 except ImportError:
-    import dataUtils as dut
+    import sys
+    sys.path.insert(1, "./../../")
+    from main import DataModule
+    from main import dut
 
 
-class TestClass(dut.DataModule):
+import pandas as pd
+
+class TestClass(DataModule):
     def __init__(self):
         super().__init__()
         self.depends = ()
-        self.run = False
+        self.run = True
+        self.l = dut.getLogger(self)
 
     @staticmethod
     def name():
@@ -30,11 +37,11 @@ class TestClass(dut.DataModule):
     def productionReady():
         return None
 
-    def importData(self):
-        pass
+    def importData(self, MasterFrame):
+        self.l.info("'Importing' data... (jk, this is just a test)")
 
     def prepareData(self):
-        pass
+        self.data = pd.DataFrame(["this is a TEST!!"])
 
     def describeData(self):
         pass
